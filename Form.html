@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title>FORM</title>
+    </header>
+    <body >
+        <form autocomplete="on" onsubmit="return true">
+        <fieldset>
+            <legend> <h1>User Form</h1></legend>
+            <table>
+                <tr>
+                    <td>
+                        First Name :
+                    </td>
+                    <td>
+                        <input type="text" id="name" value="Suriya" disabled>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Last Name :
+                    </td>
+                    <td>
+                        <input type="text" id="name" autofocus required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        DOB :
+                    </td>
+                    <td>
+                        <input type="date" id="dob" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Phone Number :
+                    </td>
+                    <td>
+                        <input type="tel" id="phone" placeholder="9876543210" maxlength="10" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        E-Mail ID :
+                    </td>
+                    <td>
+                        <input type="email" id="mail" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Gender :
+                    </td>
+                    <td>
+                        <input type="radio" id="male" name="gender" required> <label for="male">Male</label> <input type="radio" id="female" name="gender"> <label for="female">Female</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Have License :
+                    </td>
+                    <td>
+                        <input type="checkbox" id="check" required> Yes <input type="checkbox" id="check"> No
+                    </td>
+                </tr>
+                <tr>
+                    <td> Address:</td>
+                    <td><textarea name="address" placeholder="Enter your address here..." required></textarea></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="year"> Passed out year: </label> 
+                    </td>
+                    <td>
+                        <select id="year" required>
+                            <option value="2025">2025</option>
+                            <option value="2025">2024</option>
+                            <option value="2025">2023</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Rate your Java Knowledge:
+                    </td>
+                    <td>
+                        <input type="range" id="java" min="0" max="10">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="resume">Upload Resume:</label>
+                    </td>
+                    <td>
+                         <input type="file" id="resume" name="resume" required>
+                     </td>
+                </tr>
+                <tr>
+                    <td>Portfolio Link:</td>
+                    <td>
+                        <input type="url" id="portfolio" required>
+                    </td>
+                </tr>
+                <tr >
+                    <td ><input type="image" src="submit.png" alt="Submit" width="100" height="140" onsubmit="alert('Form Submitted Successfully!')"></td>
+                    <td ><input type="reset" id="reset" value="Reset" onclick="alert('Form Resetted!!')"></td>
+                </tr>
+
+            </table>
+        </fieldset>
+        </form>
+    </body>
+</html>
