@@ -1,26 +1,54 @@
 const express = require('express');
 const multer = require('multer');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
 const port = 3000;
 
-// Set up multer for file upload
+// MongoDB Connection (replace password if needed)
+mongoose.connect('mongodb+srv://root:root@cluster0.h3c80.mongodb.net/userFormDB?retryWrites=true&w=majority&appName=Cluster0', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("✅ Connected to MongoDB Atlas"))
+.catch(err => console.error("❌ MongoDB connection error:", err));
+
+// Mongoose Schema
+const userSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  dob: Date,
+  phone: String,
+  email: String,
+  gender: String,
+  licenseYes: String,
+  licenseNo: String,
+  address: String,
+  year: String,
+  java: String,
+  portfolio: String,
+  resumeFile: String,
+});
+
+const User = mongoose.model('User', userSchema);
+
+// Multer setup
 const upload = multer({ dest: 'uploads/' });
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname))); 
+app.use(express.static(path.join(__dirname)));
 
+// Routes
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-// Handle form submission
-app.post('/submit', upload.single('resume'), (req, res) => {
+app.post('/submit', upload.single('resume'), async (req, res) => {
   const data = {
-    firstName:req.body.firstName,
+    firstName: req.body.firstName,
     lastName: req.body.lastName,
     dob: req.body.dob,
     phone: req.body.phone,
@@ -35,14 +63,21 @@ app.post('/submit', upload.single('resume'), (req, res) => {
     resumeFile: req.file?.originalname,
   };
 
-  res.send(`
-    <h2>Submitted Data:</h2>
-    <pre>${JSON.stringify(data, null, 2)}</pre>
-    <a href="/">Go Back</a>
-  `);
+  try {
+    const newUser = new User(data);
+    await newUser.save(); // Save to MongoDB
+    res.send(`
+      <h2>✅ Submitted & Saved to MongoDB Atlas</h2>
+      <pre>${JSON.stringify(data, null, 2)}</pre>
+      <a href="/">Go Back</a>
+    `);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('❌ Error saving to database');
+  }
 });
 
-// Start the server
+// Start server
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`🚀 Server running at http://localhost:${port}`);
 });
