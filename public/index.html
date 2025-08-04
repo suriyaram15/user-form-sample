@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FORM</title>
+  </head>
+  <body>
+    <form action="/submit" method="POST" enctype="multipart/form-data">
+      <fieldset>
+        <legend><h1>User Form</h1></legend>
+        <table>
+          <tr>
+            <td>First Name:</td>
+            <td><input type="text" name="firstName" required autofocus></td>
+          </tr>
+          <tr>
+            <td>Last Name:</td>
+            <td><input type="text" name="lastName" required></td>
+          </tr>
+          <tr>
+            <td>DOB:</td>
+            <td><input type="date" name="dob" required></td>
+          </tr>
+          <tr>
+            <td>Phone Number:</td>
+            <td><input type="tel" name="phone" placeholder="9876543210" maxlength="10" required></td>
+          </tr>
+          <tr>
+            <td>E-Mail ID:</td>
+            <td><input type="email" name="email" required></td>
+          </tr>
+          <tr>
+            <td>Gender:</td>
+            <td>
+              <input type="radio" name="gender" value="Male" required> Male
+              <input type="radio" name="gender" value="Female"> Female
+            </td>
+          </tr>
+          <tr>
+            <td>Have License:</td>
+            <td>
+              <input type="checkbox" name="licenseYes" value="Yes"> Yes
+              <input type="checkbox" name="licenseNo" value="No"> No
+            </td>
+          </tr>
+          <tr>
+            <td>Address:</td>
+            <td><textarea name="address" required></textarea></td>
+          </tr>
+          <tr>
+            <td>Passed out year:</td>
+            <td>
+              <select name="year" required>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Rate your Java Knowledge:</td>
+            <td><input type="range" name="java" min="0" max="10"></td>
+          </tr>
+          <tr>
+            <td>Upload Resume:</td>
+            <td><input type="file" name="resume" required></td>
+          </tr>
+          <tr>
+            <td>Portfolio Link:</td>
+            <td><input type="url" name="portfolio" required></td>
+          </tr>
+          <tr>
+            <td>
+              <button type="submit">Submit</button>
+            </td>
+            <td>
+              <input type="reset" value="Reset" onclick="alert('Form Resetted!!')">
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </form>
+  </body>
+</html>
