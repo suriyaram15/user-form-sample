@@ -32,7 +32,7 @@ A simple web-based user registration form built with **HTML**, **Node.js**, **Ex
 
 ## 📷 Preview
 
-![Form Screenshot](https://user-images.githubusercontent.com/your-placeholder/screenshot.png) <!-- Optional, replace with real screenshot -->
+![Form Screenshot](https://raw.githubusercontent.com/suriyaram15/user-form-sample/refs/heads/main/Screenshot.png)
 
 ---
 
